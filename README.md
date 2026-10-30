@@ -27,6 +27,19 @@ grouped visibility to Program**. The setting is remembered between launches.
 When enabled, an eye-button change inside a matching group can immediately
 affect what viewers see, even if Preview and Program are different scenes.
 
+## Where to find the toggle
+
+1. In OBS Studio, click **Tools** in the menu bar at the top of the window.
+2. Click **Sync grouped visibility to Program**. A check mark beside the item
+   means it is enabled. Click it again to turn it off.
+
+The option starts off. When it is on, showing or hiding an item inside a
+matching group can change the live Program output immediately.
+
+The switch beside the plugin under **Tools → Plug-in Manager → Installed**
+enables the plugin itself; the separate **Tools** menu item above turns its
+visibility syncing on or off.
+
 ## Download and install (Windows x64, OBS 33)
 
 1. Close OBS and download the [Windows installer](https://github.com/Kiddabob/obs-group-visibility-sync/releases/download/v0.1.0-beta.1/GroupVisibilitySync-0.1.0-beta.1-Setup.exe).
@@ -78,10 +91,16 @@ live Program output as well.
 
 ### Why is the option missing from the Tools menu?
 
-Restart OBS after installing the plugin. In OBS 33, check that the plugin DLL
-is directly inside the `group-visibility-sync` folder in the appropriate
-`plugins` directory. Third-party plugins do not load in OBS Safe Mode. The
-current download is for Windows x64 and was tested with OBS 33.0.1.
+Make sure **Group Visibility Sync** is enabled under **Tools → Plug-in Manager
+→ Installed**. The menu item appears after OBS has loaded the plugin; an
+already-running OBS 33 session does not load newly installed plugins
+automatically. Check that the plugin DLL is directly inside the
+`group-visibility-sync` folder in the appropriate `plugins` directory.
+Third-party plugins do not load in OBS Safe Mode. The current download is for
+Windows x64 and was tested with OBS 33.0.1.
+
+The Plug-in Manager's **Browse** and **Updates** sections are disabled in OBS
+33.0.1. Download and update this plugin from its GitHub release page instead.
 
 ### Does it sync the group's own eye button or its position?
 
