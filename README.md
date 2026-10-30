@@ -23,20 +23,29 @@ affect what viewers see, even if Preview and Program are different scenes.
 
 ## Download and install (Windows x64, OBS 33)
 
-1. Download [group-visibility-sync-0.1.0-windows-x64.zip](downloads/group-visibility-sync-0.1.0-windows-x64.zip?raw=1).
-2. Close OBS. Extract the ZIP contents into `C:\ProgramData\obs-studio`.
-   The DLL should be at
-   `C:\ProgramData\obs-studio\plugins\group-visibility-sync\group-visibility-sync.dll`,
-   with a `data` folder beside it. Administrator permission may be required.
+1. Close OBS and download the [Windows installer](https://github.com/Kiddabob/obs-group-visibility-sync/releases/download/v0.1.0-beta.1/GroupVisibilitySync-0.1.0-beta.1-Setup.exe).
+2. Run the installer. It places the plugin in OBS 33's standard plugin folder
+   and adds an uninstall entry to Windows Installed apps.
 3. Open OBS, then enable **Tools → Sync grouped visibility to Program**.
+
+This early test installer is not code-signed, so Windows may show a warning
+before it runs. The release includes SHA-256 checksums for the downloads.
+
+Alternatively, download the [manual ZIP](downloads/group-visibility-sync-0.1.0-windows-x64.zip?raw=1),
+close OBS and extract its contents into `C:\ProgramData\obs-studio`. The DLL
+should be at `C:\ProgramData\obs-studio\plugins\group-visibility-sync\group-visibility-sync.dll`,
+with a `data` folder beside it. Administrator permission may be required.
 
 For portable OBS 33, extract the ZIP contents into the portable OBS root
 instead. The DLL will be in `plugins\group-visibility-sync` under that root.
 Portable OBS does not use the ProgramData plugin folder.
 
-To remove the plugin, close OBS and delete the `group-visibility-sync` folder
-from the appropriate `plugins` directory. Its saved on/off setting, if any,
-is in OBS's `plugin_config/group-visibility-sync` directory.
+To uninstall the installer version, close OBS, open **Windows Settings → Apps →
+Installed apps**, find **Group Visibility Sync for OBS Studio**, and choose
+**Uninstall**. For a manual ZIP install, close OBS and delete the
+`group-visibility-sync` folder from the appropriate `plugins` directory. The
+uninstaller preserves the saved on/off setting in OBS's
+`plugin_config/group-visibility-sync` directory.
 
 ## Scope and limitations
 
@@ -59,8 +68,8 @@ development files. Point `CMAKE_PREFIX_PATH` at the Qt and OBS SDK prefixes,
 then run:
 
 ```powershell
-cmake -S . -B build -A x64 -DCMAKE_PREFIX_PATH="C:/path/to/qt;C:/path/to/obs-sdk"
-cmake --build build --config Release
+cmake -S . -B local-build -A x64 -DCMAKE_PREFIX_PATH="C:/path/to/qt;C:/path/to/obs-sdk"
+cmake --build local-build --config Release
 ```
 
 If the OBS development files do not provide CMake package definitions, supply
@@ -69,6 +78,10 @@ If the OBS development files do not provide CMake package definitions, supply
 the synthetic core test; running it requires `OBS_PROBE_DATA` and
 `OBS_PROBE_GFX` to identify the OBS data folder and graphics module, with
 OBS's runtime DLLs on `PATH`.
+
+To build the Windows installer from the compiled DLL, install Inno Setup 6
+and run `ISCC.exe installer/group-visibility-sync.iss`. The compiler writes
+the installer into `downloads`.
 
 ## License
 

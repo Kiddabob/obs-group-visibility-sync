@@ -1,0 +1,7 @@
+Close OBS before installing or uninstalling this plugin.
+
+This installer puts the plugin in the standard OBS Studio 33 Windows plugin folder. It also adds an entry to Windows Installed apps so you can uninstall it.
+
+After restarting OBS, enable the plugin via Tools > Sync grouped visibility to Program. It is disabled by default.
+
+For portable OBS, use the ZIP download instead of this installer.

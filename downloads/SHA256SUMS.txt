@@ -1,0 +1,2 @@
+87c95de50af7aaf42815deeea23bf296f06579beaa01771c708adf38b1dda3ab  GroupVisibilitySync-0.1.0-beta.1-Setup.exe
+a8183cf3dc4f9b1522c1a035a1ee160fe5d8cb1f541bf5810bf4711adec79388  group-visibility-sync-0.1.0-windows-x64.zip
