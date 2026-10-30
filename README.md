@@ -1,12 +1,18 @@
-# Group Visibility Sync for OBS Studio
+# Group Visibility Sync
 
-Restore live show/hide updates for sources inside shared groups when using
-Studio Mode and **Duplicate Scene** in OBS Studio 33.
+An independent, third-party OBS Studio plugin that restores live show/hide
+updates for sources inside shared groups or folders in OBS Studio 33.
+
+If a source's eye button changes **Preview** but not the live **Program**
+output when using Studio Mode and **Duplicate Scene**, Group Visibility Sync
+can mirror that visibility change to the matching shared group in Program.
+It works when Preview and Program show the same scene or different scenes.
 
 **Early test release:** the Windows x64 build has been tested with OBS 33.0.1
-in a portable installation using synthetic scenes. It has not yet been tested
-with every real-world scene collection or plugin combination. Test it with
-your own scenes before relying on it during a broadcast.
+in a portable installation using synthetic scenes and reported working in the
+project owner's OBS setup. It has not yet been tested with every scene
+collection or plugin combination. Test it with your own scenes before relying
+on it during a broadcast.
 
 ## Why use it?
 
@@ -60,6 +66,37 @@ uninstaller preserves the saved on/off setting in OBS's
   testing.
 - It does not change positions, sizes, filters, or other source settings.
 
+## Common questions
+
+### Why do sources in a group update Preview but not Program?
+
+In OBS Studio 33, Studio Mode's Duplicate Scene setting gives Program a
+separate copy of each group. This is useful for preparing changes privately,
+but affects setups that use groups as shared folders across multiple scenes.
+Enable this plugin to send matching grouped source-visibility changes to the
+live Program output as well.
+
+### Why is the option missing from the Tools menu?
+
+Restart OBS after installing the plugin. In OBS 33, check that the plugin DLL
+is directly inside the `group-visibility-sync` folder in the appropriate
+`plugins` directory. Third-party plugins do not load in OBS Safe Mode. The
+current download is for Windows x64 and was tested with OBS 33.0.1.
+
+### Does it sync the group's own eye button or its position?
+
+No. It mirrors show/hide changes to matching sources **inside** a group. It
+does not sync the group's own visibility, source positions, sizes, filters or
+other settings.
+
+### Does it work on macOS or Linux?
+
+The available installer and ZIP are for Windows x64 only. macOS and Linux
+builds have not been provided or tested.
+
+For bug reports and compatibility feedback, please use the
+[GitHub issue tracker](https://github.com/Kiddabob/obs-group-visibility-sync/issues).
+
 ## Build from source
 
 The current build targets Windows x64 and requires CMake, a C++17 compiler,
@@ -86,3 +123,8 @@ the installer into `downloads`.
 ## License
 
 GPL-2.0-or-later; see [LICENSE](LICENSE).
+
+This is an independent project and is not affiliated with the OBS Project.
+The plugin was developed with AI assistance from OpenAI Codex; the owner has
+reported it working in their OBS setup, and the plugin and installer were also
+tested in isolated environments.
